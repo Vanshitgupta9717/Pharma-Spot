@@ -2,10 +2,14 @@ import React, { useState } from "react";
 import { MdShoppingBasket, MdAdd, MdLogout } from "react-icons/md";
 import { motion } from "framer-motion";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft, faArrowRight, faCoffee, faPhone, faSearch, faSquare } from '@fortawesome/free-solid-svg-icons';
+
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { app } from "../firebase.config";
 
 import Logo from "../img/logo.png";
+import Logo1 from "../img/logo1.png";
 import Avatar from "../img/avatar.png";
 import { Link } from "react-router-dom";
 import { useStateValue } from "../context/StateProvider";
@@ -56,8 +60,8 @@ const Header = () => {
       {/* desktop & tablet */}
       <div className="hidden md:flex w-full h-full items-center justify-between">
         <Link to={"/"} className="flex items-center gap-2">
-          <img src={Logo} className="w-8 object-cover" alt="logo" />
-          <p className="text-headingColor text-xl font-bold"> City</p>
+          <img src={Logo1} className="w-48 h-16 object-cover" alt="logo" />
+          <p className="text-headingColor text-xl font-bold"></p>
         </Link>
 
         <div className="flex items-center gap-8">
@@ -79,6 +83,21 @@ const Header = () => {
             <li className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
               Service
             </li>
+            <Link to={"/support"} className="text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer">
+              Support
+            </Link>
+            <div>
+            <input type="search" 
+              class="peer cursor-pointer border-black  relative z-10 h-12 w-12 rounded-full border bg-transparent pl-12 outline-none focus:w-full focus:cursor-text focus:border-indigo-600 focus:pl-16 focus:pr-4" />
+        <svg xmlns="http://www.w3.org/2000/svg" class="absolute inset-y-0 my-auto h-8 w-12 border-r border-transparent  stroke-black px-3.5 peer-focus:border-indigo-500 peer-focus:stroke-indigo-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+        </svg>
+        </div>
+        
+
+            <Link to="/contact">
+              <button className="bg-indigo-600 w-36 h-12 rounded-full text-white">contact us <span className="bg-white text-indigo-600 rounded-lg "> <FontAwesomeIcon icon={faArrowRight} className="w-8 rounded-full" /></span></button>
+            </Link>
           </motion.ul>
 
           <div
@@ -150,8 +169,8 @@ const Header = () => {
         </div>
 
         <Link to={"/"} className="flex items-center gap-2">
-          <img src={Logo} className="w-8 object-cover" alt="logo" />
-          <p className="text-headingColor text-xl font-bold"> City</p>
+          <img src={Logo1} className="w-48 h-14 object-cover" alt="logo" />
+          <p className="text-headingColor text-xl font-bold"></p>
         </Link>
 
         <div className="relative">
@@ -178,12 +197,13 @@ const Header = () => {
               )}
 
               <ul className="flex flex-col ">
-                <li
+                
+                <Link to={"/"}
                   className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2"
                   onClick={() => setIsMenu(false)}
                 >
                   Home
-                </li>
+                </Link>
                 <li
                   className="text-base text-textColor hover:text-headingColor duration-100 transition-all ease-in-out cursor-pointer hover:bg-slate-100 px-4 py-2"
                   onClick={() => setIsMenu(false)}
@@ -202,6 +222,9 @@ const Header = () => {
                 >
                   Service
                 </li>
+                <Link to="/contact">
+                  <button>contact us <span> <FontAwesomeIcon icon={faArrowLeft} /></span></button>
+                </Link>
               </ul>
 
               <p

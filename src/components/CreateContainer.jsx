@@ -102,8 +102,7 @@ const CreateContainer = () => {
           title: title,
           imageURL: imageAsset,
           category: category,
-          calories: calories,
-          qty: 1,
+          calories: calories,qty: 1,
           price: price,
         };
         saveItem(data);
